@@ -5,18 +5,27 @@
 # @example
 #   include configure_nginx
 class configure_nginx {
-  file { '/var/www/mini-proj-sample-site':
-    ensure => directory,
-    mode   => '0644',
-    owner  => www-data,
-    group  => www-data,
+  file { '/var/www/':
+    ensure  => directory,
+    mode    => '0644',
+    owner   => www-data,
+    group   => www-data,
   }
-  file { '/var/www/mini-proj-sample-site/index.html':
+  file { '/var/www/mini-proj-simple-site':
+    ensure  => directory,
+    mode    => '0644',
+    owner   => www-data,
+    group   => www-data,
+  }
+  file { '/var/www/mini-proj-simple-site/index.html':
     ensure  => file,
     mode    => '0644',
     owner   => www-data,
     group   => www-data,
     content => 'Automation for the People',
+  }
+  file { '/etc/nginx/conf.d/default.conf':
+    ensure => absent,
   }
 
   nginx::resource::server { 'mini-proj-simple-site':

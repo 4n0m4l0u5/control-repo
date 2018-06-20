@@ -29,8 +29,9 @@ node default {
   include nginx
   include configure_nginx
   include stdlib
-  include concat
+  include apt
+#  include concat
 
-  class { 'nginx': }
-  class { 'configure_nginx': }
+#  class { 'nginx': }
+#  class { 'configure_nginx': }
 }
