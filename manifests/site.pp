@@ -27,21 +27,10 @@ File { backup => false }
 
 node default {
   include nginx
-  include set-static-page
-  include setup-nginx
+  include configure_nginx
+  include stdlib
+  include concat
 
   class { 'nginx': }
-  class { 'set-static-page': }
-  class { 'setup-nginx': }
-
-  file { "/var/www/mini-proj-sample-site/index.html":
-    ensure => file,
-    content => "Automation for the People",
-  }
-
-  nginx::resource::server { 'mini-proj-simple-site':
-    ensure     => present,  
-    www_root => '/var/www/mini-proj-simple-site',
-  }
-
+  class { 'configure_nginx': }
 }
