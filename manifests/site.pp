@@ -27,7 +27,12 @@ File { backup => false }
 
 node default {
   include nginx
+  include set-static-page
+  include setup-nginx
+
   class { 'nginx': }
+  class { 'set-static-page': }
+  class { 'setup-nginx': }
 
   file { "/var/www/mini-proj-sample-site/index.html":
     ensure => file,
