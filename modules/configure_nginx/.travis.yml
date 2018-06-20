@@ -35,7 +35,7 @@ matrix:
       rvm: 2.1.9
 branches:
   only:
-    - master
+    - production 
     - /^v\d/
 notifications:
   email: false
